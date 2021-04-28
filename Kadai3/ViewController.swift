@@ -13,8 +13,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet private weak var textField1: UITextField!
     @IBOutlet private weak var textField2: UITextField!
     
-    @IBOutlet weak var switch1: UISwitch!
-    @IBOutlet weak var switch2: UISwitch!
+    @IBOutlet private weak var switch1: UISwitch!
+    @IBOutlet private weak var switch2: UISwitch!
     
     @IBOutlet private weak var label1: UILabel!
     @IBOutlet private weak var label2: UILabel!
@@ -28,28 +28,20 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    @IBAction func resultBtn(_ sender: Any) {
+    @IBAction private func resultBtn(_ sender: Any) {
+        
+        var num1 = Int(textField1.text!) ?? 0
+        var num2 = Int(textField2.text!) ?? 0
         
         if switch1.isOn == true{
-            let num1 = (Double(textField1.text!) ?? 0) * -1
-            label1.text = String(num1)
-        }else {
-            let num1 = (Double(textField1.text!) ?? 0)
-            label1.text = String(num1)
+            num1 *= -1
         }
-        
         if switch2.isOn == true{
-            let num2 = (Double(textField2.text!) ?? 0) * -1
-            label2.text = String(num2)
-            
-        }else {
-            let num2 = (Double(textField2.text!) ?? 0)
-            label2.text = String(num2)
+            num2 *= -1
         }
-        
-        var total = Double(label1.text!) ?? 0
-        total += Double(label2.text!) ?? 0
-        resultLabel.text = String(total)
+        label1.text = String(num1)
+        label2.text = String(num2)
+        resultLabel.text = String(num1 + num2)
     }
     
     //textFieldのxボタンが押された時の処理
