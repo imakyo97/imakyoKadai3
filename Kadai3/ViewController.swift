@@ -30,18 +30,25 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction private func resultBtn(_ sender: Any) {
         
-        var num1 = Int(textField1.text!) ?? 0
-        var num2 = Int(textField2.text!) ?? 0
+        let num1 = Int(textField1.text!) ?? 0
+        let num2 = Int(textField2.text!) ?? 0
         
-        if switch1.isOn == true{
-            num1 *= -1
+        let signedNum1: Int
+        if switch1.isOn {
+            signedNum1 = -num1
+        }else{
+            signedNum1 = num1
         }
-        if switch2.isOn == true{
-            num2 *= -1
+        
+        let signedNum2: Int
+        if switch2.isOn {
+            signedNum2 = -num2
+        }else{
+            signedNum2 = num2
         }
-        label1.text = String(num1)
-        label2.text = String(num2)
-        resultLabel.text = String(num1 + num2)
+        label1.text = String(signedNum1)
+        label2.text = String(signedNum2)
+        resultLabel.text = String(signedNum1 + signedNum2)
     }
     
     //textFieldのxボタンが押された時の処理
